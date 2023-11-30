@@ -1,0 +1,24 @@
+==============================
+CONSOLE 
+==============================
+
+Once logged in in the postgres server, we can type several commands:
+
+---------------------
+Commands (Console)
+---------------------
+
+PSQL has internal commands (NOT SQL Commands) THAT BEGIN WIHT '\'
+
+- \l: list all the DBs in postgres. There're 3 by default.
+- \c <DATABASE>: access a database.
+- \dt: list the tables of a database.
+- \d <TABLE>
+- \h: list the SQL commands in postgres
+- \q: quits the command shell.
+
+- SELECT current_date;
+prints the date. 
+
+-SELECT version();
+prints the software version. 

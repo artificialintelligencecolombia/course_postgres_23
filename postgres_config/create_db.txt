@@ -1,0 +1,48 @@
+==============================
+DATABASE CREATION
+==============================
+
+---------------------
+LOGGIN IN IN THE SQL DATABASE   
+---------------------
+
+1.Initial interface:
+
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+
+(Keep pressing enter until the console asks for the passwd).
+
+psql (15.5)
+ADVERTENCIA: El código de página de la consola (437) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=#
+-It tells you that you are in the PostgreSQL environment, connected to the default
+postgres database, and have superuser-level access.
+
+---------------------
+CREATE DATABASE
+---------------------
+
+1. CREATE DATABASE <database_name>;
+
+2. \l
+lists all the databases
+
+2. \c <database_name>
+Connects to a specific database
+
+3. DROP DATABASE <database_name>;
+Deletes the DB. Be careful!
+
+- \d <table_name>
+
+NOTE: '\?' for listing the whole command list.
+NOTE: there're always 3 DBs installed by default.

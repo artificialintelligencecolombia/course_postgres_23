@@ -1,0 +1,64 @@
+==============================
+CONSOLE 
+==============================
+
+---------------------
+CREATE DATABASE
+---------------------
+
+1. CREATE DATABASE <database_name>;
+
+2. \l
+lists all the databases
+
+2. \c <database_name>
+Connects to a specific database
+
+3. DROP DATABASE <database_name>;
+Deletes the DB. Be careful!
+
+- \d <table_name>
+
+NOTE: '\?' for listing the whole command list.
+NOTE: there're always 3 DBs installed by default.
+
+---------------------
+CREATE TABLE 
+---------------------
+
+1. Example:
+CREATE TABLE weather (
+ city   varchar(80),
+ temp_lo    int,    --low temperature
+ temp_hi    int,    --high temperature
+ prcp   real,   --precipitation
+ date   date    --date
+);
+
+2. Example:
+CREATE TABLE cities (
+ name varchar(80),
+ location point
+);
+
+
+NOTES:
+- white spaces can be used freely.
+- "--" for introduce comments.
+-
+
+---------------------
+Data types
+---------------------
+
+int
+smallint
+real
+double precision
+char(N)
+varchar(N)
+date
+time
+timestamp
+interval
+point

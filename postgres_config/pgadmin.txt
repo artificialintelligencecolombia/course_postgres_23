@@ -1,0 +1,15 @@
+==============================
+PG ADMIN
+==============================
+
+---------------------
+Dbs Components 
+---------------------
+
+Casts: for converting a data type into another
+Catalog: stores the metadata of the dataset.
+Event Triggers: for executing functions.
+Extensions: installes modules.
+Foreign Data Wrappers: allow Postgres to access external data sources.
+Languages: available languages: PL/SQL, Py, Perl.
+Schemas: contains tables, views, indexes, data tuples, etc.

@@ -26,6 +26,10 @@ NOTE: there're always 3 DBs installed by default.
 CREATE TABLE 
 ---------------------
 
+We can create a new table by specifying:
+1. the table name.
+2. all column names and their types
+
 1. Example:
 CREATE TABLE weather (
  city   varchar(80),
@@ -45,7 +49,6 @@ CREATE TABLE cities (
 NOTES:
 - white spaces can be used freely.
 - "--" for introduce comments.
--
 
 ---------------------
 Data types
@@ -62,3 +65,20 @@ time
 timestamp
 interval
 point
+
+---------------------
+DROP TABLE
+---------------------
+
+DROP TABLE <table_name>;
+
+---------------------
+Populating table 
+---------------------
+
+Many developers consider explicitly listing the
+columns better practice than relying on the order implicitly.
+
+1. This is the best way of inserting a record on a table.
+INSERT INTO weather (city, temp_lo, temp_hi, prcp, date)
+ VALUES ('San Francisco', 43, 57, 0.0, '1994-11-29');

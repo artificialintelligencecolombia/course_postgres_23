@@ -45,4 +45,4 @@ Deletes the DB. Be careful!
 - \d <table_name>
 
 NOTE: '\?' for listing the whole command list.
-NOTE: there're always 3 DBs installed by default.
+NOTE: there're always 3 DBs installed by default. DONT DELETE THEM.

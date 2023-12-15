@@ -6,6 +6,9 @@ PostgreSQL is a system that manages data stored in relations(TABLES).
 
 TABLE1 + TABLE2 + TABLE... = Database 
 
+Rows: collection of data.
+Columns: each one has a specific data type.
+
 ---------------------
 SQL Fundamentals
 ---------------------

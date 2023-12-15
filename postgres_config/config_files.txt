@@ -1,0 +1,47 @@
+==============================
+PG ADMIN
+==============================
+
+---------------------
+postgrsql.confi 
+---------------------
+
+Configuración general de postgres, múltiples opciones referentes a
+direcciones de conexión de entrada, memoria, cantidad de hilos de
+pocesamiento, replica, etc.
+
+1. Tools -> Query Tool
+2. SHOW config_file;
+3. Copy the url and open it by using VS Code.
+
+Its very common to configure very often this file.
+
+ NOTE: READ THE WHOLE DOCUMENT.
+
+ ---------------------
+pg_hba.conf
+---------------------
+
+This file is used to define which users can connect to which databases from
+which hosts and how they must authenticate themselves.
+
+---------------------
+pg_ident.conf
+---------------------
+
+is used for mapping between system usernames (on the host machine) and PostgreSQL
+usernames.
+
+NOTE: if default configuration is commented, it's still running. For changing it
+we have to uncomment the line and reboot the db.
+
+TIP: BACK-UP before any change.
+
+---------------------
+Apply configuration changes
+---------------------
+
+When we change any parameter of the conf files, we must either restart the server
+or reload the configuration. 
+
+TIP: BACK-UP.

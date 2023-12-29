@@ -41,7 +41,7 @@ KEY POINTS:
 a. WITH block allows you to customize database properties, but it's not always
 required. ----> SQL shells often apply default values for convenience.
 
-b. SQL commands are the same regardless of the interface you use.
+b. SQL commands are the same regardless of the interface you use(MySQL, PostGres).
 
 c. It's recommended to explicitly specify properties to ensure your database is
 configured as intended.
@@ -55,7 +55,7 @@ PG ADMIN - TABLE
 3. 'columns' tab -> we create each table's columns, its data types, the length,
 and its constraints.
 4. 'Constrains' tab -> Here we set the PK. Its important to name it:
-pk_tablename.
+pk_<tablename>.
 
 ´´´sql
 CREATE TABLE public.passengers
@@ -70,9 +70,12 @@ CREATE TABLE public.passengers
 ALTER TABLE IF EXISTS public.passengers
     OWNER to postgres;
 ´´´
+- 'public.passengers' statement explicitly places the table within the public 
+    schema. Now its access/permissions/visibility are determined by public schema.
+- Ownership to postgres user states full control over the public schema elements.
 
 ---------------------
-PG ADMIN - INSERT DATA ON TABLE
+TABLE COMMANDS
 ---------------------
 
 1. Right click over the table. -> Scripts -> OPTIONS:
@@ -83,3 +86,26 @@ PG ADMIN - INSERT DATA ON TABLE
 - INSERT: allows you to add new rows to the table by providing a template.
 - UPDATE: lets you modify existing data in the table.
 - DELETE: removes ROWS from table.
+
+---------------------
+PGADMIN - INSERT ON TABLE 
+---------------------
+
+1. Right click over the table. -> Scripts -> iNSERT Script:
+
+´´´sql
+INSERT INTO public.passengers(
+	id, name, email, birth_date)
+	VALUES (?, ?, ?, ?);
+´´´
+
+- It will facilitate us the coding from scratch.
+- ID field can be deleted as it autocompletes with serial non-repetitive values.
+- We must to replace the '?' with the row's info. Use ''.
+- 'birth_date' column has a certain date format. For correct inputs we have to
+    consult the date format:
+
+´´´sql
+SELECT current_date;
+´´´
+- Retrieves the date format.

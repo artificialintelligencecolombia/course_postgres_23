@@ -1,0 +1,31 @@
+==============================
+PARTITIONS
+==============================
+
+Partitioning refers to splitting what is logically one large table into
+smaller physical pieces.
+
+KEY POINTS:
+
+a. Facilitates maintenance, back up, restores on specific partitions.
+
+b. Simplifies data archiving/removal.
+
+c. Distributes partitions across multiple servers for storage.
+
+d. Grants access to determined partitions, improving security.
+
+TIP: Partitions can be based on various features:
+- time.
+- Region.
+- Product category.
+- File size.
+
+---------------------
+PG ADMIN - TABLE PARTITION
+---------------------
+
+In general, the followed steps for a given partition consists in:
+
+1. Create the partitions of the table.
+2. Insert the data into the partitioned table.

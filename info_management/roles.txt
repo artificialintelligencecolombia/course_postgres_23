@@ -1,0 +1,18 @@
+==============================
+ROLES
+==============================
+
+- Allows us to determine the security level of the user over a DB.
+- With 
+
+---------------------
+TABLE COMMANDS
+---------------------
+
+- CREATE: It creates the empty table.
+- ALTER: modifies the table content.
+- DROP: deletes the table and its content.
+
+---------------------
+PG ADMIN - DATABASE
+---------------------

@@ -4,7 +4,6 @@ ROLES
 
 ROLE: Database access permissions. It could be a user or a group of users.
 
-c
 
 ´´´sql 
 CREATE ROLE name; -- creates a new role.

@@ -1,0 +1,75 @@
+==============================
+FOREIGN KEYS 
+==============================
+
+Its the relationship tool that keeps consistency in the databse's tables.
+The elements listed are:
+
+- Table of origin: The entity.
+- Table of destination: Joint table.
+- Actions.
+
+---------------------
+PG ADMIN - FK ON TABLE
+---------------------
+
+1. First we have to create the joint table (the one who contains FKs).
+
+´´´sql
+CREATE TABLE public.trains_stations
+(
+    id serial NOT NULL,
+    train_id integer,
+    station_id integer,
+    departure_time time without time zone,
+    arrival_time time without time zone,
+    name character varying,
+    CONSTRAINT pk_trains_stations PRIMARY KEY (id)
+);
+
+ALTER TABLE IF EXISTS public.trains_stations
+    OWNER to postgres;
+´´´
+
+2. Right click on Joint Table -> Properties.
+3. On tab 'Constrains' -> tab 'FK'.
+Name: fk_trains_stations_stations --fk_<tablename>
+
+4.Click on edit btn -> 'Columns' tab.
+
+Local column: trains_stations -> station_id
+References: public.stations -> Referencing: id
+
+---------------------
+5.ACTIONS
+---------------------
+
+This tab determines what has to be done in the JOINT TABLE, once the entities
+tables has been modified. 
+
+a. ON UPDATE:
+- NO ACTIONS
+- RESTRICT: 'you have no permissions'.
+- CASCADE: if entity changes, joint changes. ***
+- SET NULL. Once changed, the JOIN's column becomes null.
+- SET DEFAULT: goes back to default value.
+
+b. ON DELETE:
+- NO ACTION.
+- RESTRICT.
+- CASCADE. ***
+- SET NULL.
+- SET DEFAULT.
+
+6.
+´´´sql
+ALTER TABLE IF EXISTS public.trains_stations
+    ADD CONSTRAINT fk_trains_stations_stations FOREIGN KEY (station_id)
+    REFERENCES public.stations (id) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+    NOT VALID; --
+´´´
+
+
+

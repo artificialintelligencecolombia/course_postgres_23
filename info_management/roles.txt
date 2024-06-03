@@ -1,0 +1,102 @@
+==============================
+ROLES
+==============================
+
+ROLE: Database access permissions. It could be a user or a group of users.
+
+
+´´´sql 
+CREATE ROLE name; -- creates a new role.
+
+DROP ROLE name; -- delete the role.
+
+SELECT rolname FROM pg_roles; --determine if a role exists.
+
+´´´
+
+TIP: 
+´´´psql 
+/du 
+´´´
+- Lists the exisiting roles.
+
+---------------------
+CREATE ROLE - PSQL
+---------------------
+
+1. Open the psql. Enter the DB we're working on (It seems roles can be created
+just from anywhere in the console).
+
+2.
+´´´sql
+CREATE ROLE user_query; 
+´´´
+- At this point, the role has no permissions nor atrs.
+
+3.
+´´´sql
+ALTER ROLE user_query
+    WITH
+    -- SUPERUSER 
+    LOGIN
+    PASSWORD 'etc1234'; -- Defeined permissions for the role.
+´´´
+- LOGIN + PSSWD are the features that allow the usr to connect to any DB.
+
+---------------------
+DROP ROLE - PSQL
+---------------------
+
+1. Retrieve the current user:
+´´´sql
+SELECT CURRENT_USER;
+´´´
+
+2. If logged as an user and want to switch to superuser (postgres):
+
+´´´sql
+\c - postgres
+´´´
+- Connects to the current '-' database as superuser.
+
+3.
+´´´sql 
+DROP ROLE undesired_user;
+´´´
+
+---------------------
+CREATE ROLE - PGADMIN
+---------------------
+
+In the interface, when creating the role we have the list of privileges a role
+can have. Its up to us to define the permissions for each role:
+
+- Can login? YES
+- Superuser? --superuser
+- Create roles? --superuser
+- Create databases? --superuser
+- Update catalog? --superuser
+- Inherit rights from the parent role? YES 
+- Can initiate streaming...? --superuser
+
+Key points:
+- The above configuration define the basic permissions for the new role.
+
+´´´sql
+CREATE ROLE user_query WITH
+    LOGIN
+    NOSUPERUSER
+    NOCREATEDB
+    NOCREATEROLE
+    INHERIT
+    NOREPLICATION
+    CONNECTION LIMIT -1
+    PASSWORD 'xxxxxx'; 
+    ´´´
+
+    NOTE: We can customize the permissions per table for each user. The psql
+    equivalent is:
+
+    ´´´sql
+    GRANT INSERT, SELECT, UPDATE ON TABLE public.estations TO user_query;
+    ´´´

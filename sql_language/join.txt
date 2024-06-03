@@ -1,0 +1,19 @@
+==============================
+JOIN
+==============================
+
+Join queries are those  that access multiple tables (or multiple
+instances of the same table).
+
+1. Example
+SELECT *
+    FROM weather JOIN cities ON city = name;
+
+2. Example
+SELECT city, temp_lo, temp_hi, prcp, date, location
+    FROM weather JOIN cities ON city = name;
+
+3. Example
+SELECT weather.city, weather.temp_lo, weather.temp_hi,
+    weather.prcp, weather.date, cities.location
+    FROM weather JOIN cities ON weather.city = cities.name;

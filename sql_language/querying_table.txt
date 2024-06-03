@@ -1,0 +1,61 @@
+==============================
+QUERIES
+==============================
+
+---------------------
+SELECT
+---------------------
+
+Its used fo retrieving data.
+
+1. Example
+SELECT * FROM weather;  -- * refers to all the columns.
+
+2. Example
+SELECT city, temp_lo, temp_hi, prcp, date FROM weather;
+
+3. Example
+SELECT city, (temp_hi+temp_lo)/2 AS temp_avg, date FROM weather;
+We can create new expressions by using the data.
+
+NOTE: 'AS' is used to relabel a column.
+
+---------------------
+WHERE
+---------------------
+
+- Specifies which rows are wanted. WHERE is used for boolean expressions. If
+a row's value is true, then the WHERE returns the row.
+- AND, OR, NOT are used as well.
+
+1. Example
+SELECT * FROM weather
+ WHERE city = 'San Francisco' AND prcp > 0.0;
+
+---------------------
+Pg Admin Queries 
+---------------------
+
+1. Select the db.
+2. Go to Tools -> Query tool.
+
+---------------------
+ORDER BY
+---------------------
+
+You can request that the results of a query be returned in sorted order.
+
+1. Example
+SELECT * FROM weather
+ ORDER BY city;
+
+---------------------
+DUPLICATED IN QUERIES
+---------------------
+
+We can requiest that duplicated rows be removed from QUERY.
+
+
+SELECT DISTINCT city
+ FROM weather
+ ORDER BY city;

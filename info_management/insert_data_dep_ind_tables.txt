@@ -1,0 +1,34 @@
+==============================
+INSERT DATA
+==============================
+
+- For populating tables, we use the INSERT function.
+- Firstly, we fill the independet tables (without FKs). Then we use that data
+    for filling the dependent tables.
+
+1. Go to independet table (Entity) -> Right click -> INSERT script.
+
+```SQL
+INSERT INTO public.passengers(
+    name, email, birth_date,)
+VALUES (?, ?, ?);
+```
+
+2. Go to dependent table (Joint) -> Right click -> INSERT script.
+
+```SQL
+INSERT INTO public.passengers_trains_stations(
+    name, id_passenger, id_trains_stations,)  
+VALUES (?, ?);
+```
+KEY POINTS:
+- For filling the dependent tables, we use the EXISTING data from the 
+    entities tables.
+- id_trains_stations is the data from that table, so it must be already on there.
+
+---------------------
+UPDATE DATA
+---------------------
+
+If the data from ENTITIES TABLES (independent tables) is modified, then the
+data from dependent tables is updated as well.

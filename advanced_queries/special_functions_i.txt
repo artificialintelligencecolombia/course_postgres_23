@@ -1,0 +1,89 @@
+==============================
+SPECIAL FUNCTIONS IN POSTGRESQL
+==============================
+
+---------------------
+ON CONFLICT DO
+---------------------
+
+It help us updating already existing row in a table when there's some conflict.
+Normally, when trying to insert data in already existing row there will be a error,
+CONFLICT will update the desired columns of the row.
+
+Example:
+```postgresql
+    INSERT INTO public.stations(id, name, reference) 
+    VALUES (1, 'Acevedo', 'Calle 107');
+```
+Output:
+ERROR:  llave duplicada viola restricción de unicidad «pk_stations»
+DETALLE:  Ya existe la llave (id)=(1).
+
+Solution:
+```postgresql
+    INSERT INTO public.stations(id, reference) 
+    VALUES (1, 'Calle 107')
+    ON CONFLICT(id) DO UPDATE SET reference = 'Calle 107';
+```
+
+---------------------
+RETURNING
+---------------------
+
+Help us verify the row inmediately inserted.
+
+Example:
+```postgresql
+    INSERT INTO public.stations(id, name, reference) 
+    VALUES (12, 'Copacabana', 'Parque Principal')
+    RETURNING *;
+```
+
+---------------------
+LIKE / ILIKE
+---------------------
+
+These functions are used for pattern matching within strings, allowing for
+simple wildcard operations in queries.
+
+NOTE: sql patterns have more limited syntx than RegEx.
+
+- LIKE is case sensitive.
+- ILIKE is not case sensitive.
+
+Example:
+```postgresql
+    SELECT * FROM table_name 
+    WHERE column_name LIKE '%nan%';
+```
+Output:
+Any row where column_name contains 'nan' ANYWHERE in its value: (Fernando, etc).
+
+Example:
+```postgresql
+    SELECT * FROM table_name 
+    WHERE column_name LIKE 'n%';
+```
+Output:
+Any row where column_name starts with 'n' (low case): (nicole, nick).
+
+Example:
+```postgresql
+    SELECT * FROM table_name 
+    WHERE column_name LIKE '_a%';
+```
+Output:
+Any row where column_name where the second char is 'a' (the first one '_' matches
+any character), and the sequence of characters after 'a' could be any one.
+
+---------------------
+IS / IS NOT
+---------------------
+
+Example:
+```postgresql
+    SELECT * FROM table_name 
+    WHERE column_name IS NULL;
+```
+Output: 
+Any row where column_name contains NULL or is NULL. Same could be use with IS NOT.

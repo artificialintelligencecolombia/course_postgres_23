@@ -1,0 +1,13 @@
+==============================
+TRIGGERS
+==============================
+
+Its the order where a function is automatically executed whenever a operation
+is performed. It can be defined to be executed:
+
+- Before or after any INSERT, UPDATE or DELETE operation.
+- Once per modified row.
+- Once per SQL statement.
+
+***
+NOTE:

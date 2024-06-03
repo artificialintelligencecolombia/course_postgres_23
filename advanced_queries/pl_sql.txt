@@ -1,0 +1,64 @@
+==============================
+PL/PgSQL
+==============================
+
+Its a procedural programming language specifically designed for use with PostgreSQL
+databases.
+
+---------------------
+PL/pgSQL Features
+---------------------
+
+1. It allows to write procedural logic -> conditional statements, loops, flow control
+structures. (SQL is a declarative language).
+
+2. We can create functions, for modularity and code reuse.
+
+3. PL/pgSQL allows error handling mechanisms, including the ability to  catch and
+handling exceptions.
+
+4. It introduces the concept of variables.
+
+5. It supports dynamic sql, which generates queries based on runtime conditions or
+user inputs.
+
+..etc.
+
+***NOTE:
+- SQL being a declarative language means when writing SQL statements, they say
+what we want to retrieve, not how!.
+- SQL being declarative means the operations are set-based rather than row by row.
+
+Example:
+```pl/pgSQL
+DO $$
+BEGIN
+    RAISE NOTICE 'Hello World!';
+END
+$$
+```
+
+Example:
+```pl/pgSQL
+CREATE FUNCTION nombres_conteo() -- function's name.
+RETURNS integer -- data type that function returns.
+AS $$   -- Starting point of the function's body.
+DECLARE -- variables declaration.
+    rec record; -- variable_name variable_type;
+    contador INTEGER := 0;  -- ':=' is used for assigment.
+BEGIN -- execution block.
+    FOR rec IN SELECT * FROM public.passengers LOOP
+        RAISE NOTICE 'El pasajero se llama %', rec.nombre; -- '%' is where the var goes.
+        contador := contador + 1;
+    END LOOP;
+    RAISE NOTICE 'El conteo de passengers es %', contador;
+    RETURN contador;
+END
+$$
+LANGUAGE PLPGSQL;
+```
+
+For calling the function:
+```pl/pgSQL
+SELECT nombres_conteo();    -- The function's called and executed.
+```

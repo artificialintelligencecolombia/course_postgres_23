@@ -1,0 +1,103 @@
+==============================
+DATABASE CREATION
+==============================
+
+There are 2 main principles in the db design process:
+
+1. No duplicated information (redundancy).
+2. Correctness and completeness of information its important.
+
+Now, a good database design is one that:
+
+1. Divides info into subject-based tables (entities).
+2. Provides access to the needed info in tables as needed.
+3. Ensures support and accuracy of info.
+4. Accomodates data for processing and reporting purposes.
+ 
+Note: This whole process is done with the help of the ERM (Entity relationship
+Model).
+
+---------------------
+1. Determine the purpose of the db.
+---------------------
+
+How is expected to be used and who will use it.
+Example: 'The customer database keeps a list of customer information for the
+purpose of producing mailings and reports.'
+
+---------------------
+2. Find and organize the information required.
+---------------------
+
+Start with existing info. Its like taking info by type and fill forms with it.
+The idea is to classify the info and list the fields for each listed entity.
+NOTE: its not necessary a perfect list. Just list each item of info.
+reports and mailings you might want to create helps you identify items you will
+need in your database.
+
+---------------------
+3. Divide the information into tables. 
+---------------------
+
+Each table is an entity with facts of it. Dont repeat info over the tables,
+instead create a new separated table.
+
+---------------------
+4. Turn information items into columns.
+---------------------
+
+To determine the columns in a table, decide what information you need to track
+about the subject recorded in the table.
+Note: stores info in its smallest module: example First name, Last Name.
+
+---------------------
+5. Specify primary keys.
+---------------------
+
+Identifies each row stored in the table. Choose PK with values different from 
+data. PK never changes.
+
+---------------------
+6. Creating the table relationships.  
+---------------------
+
+- One to many: [Supplier]-[Products]
+One supplier can deliver many products. Products table has a FK column with
+the Supplier's ID from Supplier table (PK).
+
+- Many to many: [Order]-[Products]
+one order can include many products. A product can appear in many orders.
+For avoid repeating information, we create a new table (JUNCTION/BRIDGING TABLE). 
+[Order_details]'s new table contains Order ID and Product ID per row so 
+each element from each table (order with product) is related.
+
+- One to one: [Product]-[Additional info]
+For each record in the Product table, there exists a single matching record in
+the supplemental table.
+
+CONCLUSION:
+
+- One to many, one to one: tables share a common column(FK).
+- Many to many: a third table is needed to represent the relationship.
+
+---------------------
+7. Refine your design. 
+---------------------
+
+Highlight potential problems by populating the db, creating queries, etc.
+
+Check the next features:
+
+- Add missing columns.
+- Drop unnecessary columns.
+- Entering duplicated info -> if so, divide table into 2 tables (presumably one
+to many relationship). 
+- Tables with too many fields and empty records -> redesing table for fewer fields
+and more records.
+- Breack each info into smallest useful parts (addresses).
+- Check each column contains data of that entity (table), if not, change the column to
+another table.
+- Establish all relationships between each table.
+
+8. Apply the normalization rules.         
+

@@ -1,0 +1,111 @@
+==============================
+TABLES
+==============================
+
+Its the container and structure of the information.
+
+---------------------
+TABLE COMMANDS
+---------------------
+
+- CREATE: It creates the empty table.
+- ALTER: modifies the table content.
+- DROP: deletes the table and its content.
+
+---------------------
+PG ADMIN - DATABASE
+---------------------
+
+The process for creating a new table in PG ADMIN is listed as it follows:
+
+1. Open Pg Admin and input the passwd.
+2. When creating the database by right click over "Databases", an emergent
+window will display the options for the database and the SQL code in a tab.
+
+´´´sql
+CREATE DATABASE transportation
+  WITH
+  OWNER = postgres
+  ENCODING = 'UTF8'
+  LOCALE_PROVIDER = 'libc'
+  CONNECTION LIMIT = -1
+  IS_TEMPLATE = False;
+´´´
+
+- Creates a database named transportation.
+- It sets the database owner to postgres, uses UTF-8 encoding and libc for locale
+support, allows unlimited connections, and is not a template database.
+
+KEY POINTS:
+
+a. WITH block allows you to customize database properties, but it's not always
+required. ----> SQL shells often apply default values for convenience.
+
+b. SQL commands are the same regardless of the interface you use(MySQL, PostGres).
+
+c. It's recommended to explicitly specify properties to ensure your database is
+configured as intended.
+
+---------------------
+PG ADMIN - TABLE
+---------------------
+
+1. When DB is created -> go to 'Tables' -> right click -> 'Create'.
+2. 'general' tab -> name the table with the entity name.
+3. 'columns' tab -> we create each table's columns, its data types, the length,
+and its constraints.
+4. 'Constrains' tab -> Here we set the PK. Its important to name it:
+pk_<tablename>.
+
+´´´sql
+CREATE TABLE public.passengers
+(
+    id serial,
+    name character varying(80),
+    email character varying,
+    birth_date date,
+    CONSTRAINT pk_passengers PRIMARY KEY (id)
+);
+
+ALTER TABLE IF EXISTS public.passengers
+    OWNER to postgres;
+´´´
+- 'public.passengers' statement explicitly places the table within the public 
+    schema. Now its access/permissions/visibility are determined by public schema.
+- Ownership to postgres user states full control over the public schema elements.
+
+---------------------
+TABLE COMMANDS
+---------------------
+
+1. Right click over the table. -> Scripts -> OPTIONS:
+
+- CREATE: generates the CREATE TABLE script (used to create it). For copying
+    and info purposes (We cant create tables inside tables).
+- SELECT: Retrieves data from table.
+- INSERT: allows you to add new rows to the table by providing a template.
+- UPDATE: lets you modify existing data in the table.
+- DELETE: removes ROWS from table.
+
+---------------------
+PGADMIN - INSERT ON TABLE 
+---------------------
+
+1. Right click over the table. -> Scripts -> iNSERT Script:
+
+´´´sql
+INSERT INTO public.passengers(
+	id, name, email, birth_date)
+	VALUES (?, ?, ?, ?);
+´´´
+
+- It will facilitate us the coding from scratch.
+- ID field can be deleted as it autocompletes with serial non-repetitive values.
+- We must to replace the '?' with the row's info. Use ''.
+- 'birth_date' column has a certain date format. For correct inputs we have to
+    consult the date format:
+
+´´´sql
+SELECT current_date;
+´´´
+- Retrieves the date format.

@@ -1,0 +1,33 @@
+==============================
+SPECIAL FUNCTIONS IN POSTGRESQL
+==============================
+
+---------------------
+COALESCE
+---------------------
+
+It compares 2 values and returns the NOT NULL value.
+
+---------------------
+NULLIF
+---------------------
+
+It compares 2 values and returns NULL is both are the same.
+
+---------------------
+GREATEST
+---------------------
+
+It compares an array of values and returns the greater one.
+
+---------------------
+LEAST
+---------------------
+
+It compares an array of values and returns the minor one.
+
+---------------------
+ANONYMOUS BLOCKS
+---------------------
+
+It allows us to insert conditionals inside the query.

@@ -1,0 +1,82 @@
+==============================
+ENTITY RELATIONSHIP MODEL (ERM)
+==============================
+
+Is a diagram. It graphically illustrates the interrelationships of the entities
+of a database system.
+
+Uses:
+- design
+- debugging
+- reduce errors from starting point.
+
+---------------------
+ENTITY
+---------------------
+
+Tangible: represent objects from the real world (person, car, dog, etc.)
+Intangible:loan, travel, subject.
+
+Weak: is part of a strong entity. 
+Strong: Is the independent entity.
+
+example:
+Building -> strong
+Classroom -> Weak
+
+Car -> strong
+Motor -> weak 
+
+https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210219121849/12310.png
+Strong entity + Weak entity
+
+---------------------
+ATTRIBUTES
+---------------------
+
+Properties that define an entity.
+
+PRIMARY KEY: unequivocally differentiate one record of the entity from
+a different one.
+
+COMPOSITE ATTRIBUTE: composed of many atr. Example: address -> (City, street,
+career, etc).
+
+MULTIVALUED ATR: when the entity has more than one of the same atr. Example:
+one student can have multiple phone numbers. A car's composed of 4 tires.
+
+DERIVATED: its derived from another atr. Example: Age atr can be derived from
+Date_of_Birth atr.
+
+---------------------
+CARDINALITY
+---------------------
+
+- CARDINALITY 1:1
+-|----------|- 
+[PERSONS]1 -has- 1[CONTACT-DATA] //A person only has a unique serie of
+                                data contact info.
+                                //Vice versa, a contact data info belongs
+                                only to a single person.
+
+
+- CARDINALITY 1:N
+-|------------<-
+
+When an entity has a relationship with another one with many elements (or
+many entities of the same type, in other words). Buut each of the repeated
+elements is related to only one entity.
+
+ex:
+
+[PERSON] -|--------<- [AUTO] //A person can own many autos, but each of
+                                them has to belong to one single owner.
+
+                                
+                                
+- CARDINALITY N:N
+->----------<-
+
+ex:
+[ALUMN]->----------<-[SUBJECT]  //An alumn could take many classes, and 
+                                a single class could contain many alumns.

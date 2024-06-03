@@ -1,0 +1,14 @@
+==============================
+SCHEMA
+==============================
+
+Its the logical organization of the dataset, such as tables, views,
+functions, and data types.
+
+PUBLIC SCHEMA: default schema when a new DB is created. It provides the start
+of the DB organization.
+
+Pros:
+- Makes the DB more organized.
+- Improve security and access control.
+- Allows to grant permissions for collaborators. 

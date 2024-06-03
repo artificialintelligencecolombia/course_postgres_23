@@ -1,0 +1,40 @@
+==============================
+POSTGRESQL
+==============================
+
+PostgreSQL is a system that manages data stored in relations(TABLES).
+
+TABLE1 + TABLE2 + TABLE... = Database 
+
+Rows: collection of data.
+Columns: each one has a specific data type.
+
+---------------------
+SQL Fundamentals
+---------------------
+
+- Database: Data.
+- Motor: POSTGRESQL.
+- Server: Hardware.
+
+---------------------
+Postgres features
+---------------------
+
+1. Postgres is constantly updated by the developers community, as an Open Source
+project.
+
+2. Uses Objeto.Relational structure, so de dbs are related as objects (with keys,
+inheritance). So the tables are related among them.
+
+3. PostGIS is a geolocalization service. We can use it in postgres.
+
+4. PL/PgSQL is for programming inside SQL language.
+
+5.
+A: atomicidad. Split the fns on the DB into smaller tasks. For troubleshooting.
+C: consistencia. Tables are related with keys + so both are congruents. 
+I: isolation. Multitasking in the same DB. Functions isolated. 
+D: durabilidad. If server fails, the info wont lost. It has a bitacora system for
+back up.
+

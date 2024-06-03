@@ -1,0 +1,39 @@
+==============================
+N TO N & BRIDGING TABLES
+==============================
+
+Exists when each record from table A can be associated with multiple records
+in table B, and vice versa.
+
+Examples:
+
+1.Imagine a library: a single book (one) can be borrowed by multiple users (many),
+and vice versa, a user (one) can borrow multiple books (many).
+2.Students and courses (a student takes many courses, and a course has many
+students).
+3.Actors and movies (an actor stars in many movies, and a movie features many
+actors).
+4.Products and categories (a product belongs to multiple categories, and a
+category holds multiple products).
+
+
+NOTE: a traditional table structure can't directly represent n:n relationships,
+we introduce a bridging table.
+
+---------------------
+BRIDGING TABLES 
+---------------------
+
+This table act as a link between the tables. It contains:
+
+1. FK: Each column in the bridging table references a primary key from one of the
+original tables.
+
+2. Additional info: Depending on your needs, you can add additional columns to
+capture information about the relationship itself. 
+
+NOTE: A BRIDGING TABLE CAN CONNECT AN ENTITY WITH ANOTHER BRIDGING TABLE.
+
+Example: 
+Passanger-|--------<-Viajes-|---------|-Trayectos->------Estaciones
+                                                 ->------Trenes               

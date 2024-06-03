@@ -1,0 +1,9 @@
+==============================
+UPDATE
+==============================
+
+Existing rows can be updated.
+
+UPDATE table_name
+    SET column_name = value
+    WHERE condition;

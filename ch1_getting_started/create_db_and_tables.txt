@@ -1,0 +1,115 @@
+==============================
+SQL LANGUAGE FUNDAMENTALS
+==============================
+
+---------------------
+LOGGIN IN IN THE SQL DATABASE   
+---------------------
+
+1.Initial interface:
+
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+
+(Keep pressing enter until the console asks for the passwd).
+
+psql (15.5)
+ADVERTENCIA: El código de página de la consola (437) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=#
+-- It tells you that you are in the PostgreSQL environment, connected to the default
+postgres database, and have superuser-level access.
+
+---------------------
+Create & Drop Databases
+---------------------
+
+```PostgreSQL
+CREATE DATABASE <database_name>;
+```
+
+```PostgreSQL
+DROP DATABASE <database_name>;
+```
+- Deletes the DB. Be careful!
+
+***
+NOTES: 
+1. '\?' for listing the whole command list.
+2. There're always 3 DBs installed by default:
+    - template0
+    - template1
+    - postgres
+DONT DELETE THEM.
+
+---------------------
+PostgreSQL Commands
+---------------------
+
+- \l
+lists all the databases
+
+- \c <database_name>
+Connects to a specific database
+
+- \d <table_name>
+Describes a table.
+
+- \h -> Help with SQL Commands
+
+- \q -> Quit psql.
+
+---------------------
+Enumerated Type
+---------------------
+
+When creating a table's column with a defined list of options for each record, we 
+call to this procedure a ENUMERATED TYPE, example:
+
+Column: property_type
+    - casa 
+    - apartamento 
+    - local 
+    - oficina
+    - lote
+    - finca
+
+We can define the column's data type as a VARCHAR(#), but this can lead to errors 
+due the user can input any string value. This is why enumerated type method's used.
+Following the steps, we create a enumerated type lsit of options:
+
+1. Create the enumerated type list (BEFORE THE TABLE THAT CONTAINS THE TARGET COLUMN)
+```
+CREATE TYPE property-type AS ENUM ('casa', 'apartamento', 'local', 'oficina', 'lote',
+'finca');
+```
+
+2.Having the enumerated type list in the DB server, we proceed to create the 
+table and its defined options column.
+```
+CREATE TABLE property (
+id SERIAL,
+description TEXT,
+property_type property_type, --This column uses the enumerated type list.
+price INT,
+CONSTRAINT pk_property_type PRIMARY KEY (id)
+)
+
+---------------------
+Primary Key
+---------------------
+
+When a table's created, we've to tell the DB Server what column(s) will serve as
+the PK. This is done in the last part of the table's SQL CREATE query.
+
+```PostgreSQL
+...,
+CONSTRAINT pk_<table_name> PRIMARY KEY (<column_name>) --Usually we use id col.
+```

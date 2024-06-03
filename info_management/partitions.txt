@@ -1,0 +1,89 @@
+==============================
+PARTITIONS
+==============================
+
+Partitioning refers to splitting what is logically one large table into
+smaller physical pieces.
+
+KEY POINTS:
+
+a. Facilitates maintenance, back up, restores on specific partitions.
+
+b. Simplifies data archiving/removal.
+
+c. Distributes partitions across multiple servers for storage.
+
+d. Grants access to determined partitions, improving security.
+
+TIP: Partitions can be based on various features:
+- time.
+- Region.
+- Product category.
+- File size.
+
+---------------------
+PG ADMIN - TABLE PARTITION
+---------------------
+
+In general, the followed steps for a given partition consists in:
+
+1. Create partitioned table (Its still empty without partitioning rules).
+2. Create the partition categories for the table.
+3. Insert data into partitioned 'subtables'. 
+
+Example:
+Create a partitioned table.
+
+1. Right click over Tables -> Create.
+2. Name: bitacora_viaje -> Columns: id serial, id_trip int, date date.
+'General' tab -> Partitioned table ON.
+NOTE: In a partitioned table, there is no PK!. No constraints (in this case).
+
+3. 'Partitions' tab -> Partition Type: Range. -> Partition Keys: Column, date.
+NOTE: At this point we defined the partition table, but still need the
+PARTITIONS.
+
+´´´sql
+CREATE TABLE public.bitacora_viaje
+(
+    id serial,
+    trip_id integer,
+    date date
+) PARTITION BY RANGE (date);
+
+ALTER TABLE IF EXISTS public.bitacora_viaje
+    OWNER to postgres;
+´´´
+
+NOTE: At this point we can't insert data because there're no partitions yet.
+
+---------------------
+PG ADMIN - CREATING PARTITIONS
+---------------------
+
+This process is done (in the video) by coding SQL.
+
+´´´sql 
+CREATE TABLE bitacora_viaje2019 PARTITION OF public.bitacora_viaje
+FOR VALUES  FROM ('2019-01-01') TO ('2019-12-31');
+
+CREATE TABLE bitacora_viaje2020 PARTITION OF public.bitacora_viaje
+FOR VALUES  FROM ('2020-01-01') TO ('2020-12-31');
+
+CREATE TABLE bitacora_viaje2021 PARTITION OF public.bitacora_viaje
+FOR VALUES  FROM ('2021-01-01') TO ('2021-12-31');
+
+-- Each partition is a table.
+´´´
+
+---------------------
+INSERT DATA ON PARTITIONED TABLE 
+---------------------
+
+Once the partitions are already available, we can insert data (the same way).
+
+´´´sql 
+INSERT INTO public.bitacora_viaje(
+    trip_id, date)
+VALUES (12345, '2019-05-23');
+´´´

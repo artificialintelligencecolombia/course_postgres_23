@@ -1,0 +1,13 @@
+==============================
+DELETIONS
+==============================
+
+Rows can be removed.
+
+1. Example
+DELETE FROM table
+    WHERE condition;
+
+2. Example
+DELETE FROM table;
+- This command deletes all rows from the table. Leaves it empty.

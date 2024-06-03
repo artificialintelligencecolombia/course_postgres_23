@@ -1,0 +1,64 @@
+==============================
+VIEWS
+==============================
+
+A view is a virtual table based on the result of a SELECT query. A view is a query
+that allows us to protect sensitive information from table and it does not stores
+nor updates data.
+
+---------------------
+TYPES OF VIEWS
+---------------------
+
+1. View: A view executes a query on one or more tables, presenting the data in a 
+virtual table without storing the actual data. It dynamically retrieves updated 
+information from the underlying table(s) during each query execution.
+
+2. Materialized view: A materialized view executes a query once and stores the result 
+set in memory. Unlike regular views, it retains a snapshot of the data obtained during
+ the initial query execution, allowing for faster access.
+
+---------------------
+Creating a VIEW
+---------------------
+
+```postgres
+CREATE VIEW view_name AS    -- Main line.
+SELECT
+    column1,
+    column2,
+    -- add more columns as needed
+FROM
+    your_table
+WHERE
+    -- add conditions if needed;
+
+```
+
+---------------------
+Creating a MATERIALIZED VIEW
+---------------------
+
+```postgres
+CREATE MATERIALIZED VIEW materialized_view_name AS  -- Main line.
+SELECT
+    column1,
+    column2,
+    -- add more columns as needed
+FROM
+    your_table
+WHERE
+    -- add conditions if needed;
+
+```
+
+---------------------
+Storing data in MATERIALIZED VIEW
+---------------------
+
+After creating the materialized view, we have to populate it with data. This is done
+by:
+
+```postgres
+REFRESH MATERIALIZED VIEW materialized_view_name;
+```

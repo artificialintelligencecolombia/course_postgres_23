@@ -50,7 +50,7 @@ NOTES:
 DONT DELETE THEM.
 
 ---------------------
-PostgreSQL Commands
+psql Commands
 ---------------------
 
 - \l

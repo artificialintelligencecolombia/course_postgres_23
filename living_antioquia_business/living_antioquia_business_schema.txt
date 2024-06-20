@@ -1,0 +1,101 @@
+==============================
+LIVING ANTIOQUIA BUSINESS SCHEMA
+==============================
+
+---------------------
+Database Schema
+---------------------
+
+-- Create Suppliers table
+CREATE TABLE suppliers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    contact_details TEXT
+);
+
+-- Create RawMaterials table
+CREATE TABLE raw_materials (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    quantity NUMERIC NOT NULL,
+    supplier_id INT REFERENCES suppliers(id),
+    reorder_level NUMERIC NOT NULL
+);
+
+-- Create ProductCategories table
+CREATE TABLE product_categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+-- Create FinishedProducts table
+CREATE TABLE finished_products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    volume VARCHAR(50) NOT NULL,
+    quantity NUMERIC NOT NULL,
+    price NUMERIC NOT NULL,
+    category_id INT REFERENCES product_categories(id)
+);
+
+-- Create Customers table
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    type VARCHAR(50) NOT NULL, -- B2B or Final Customer
+    contact_details TEXT
+);
+
+-- Create Locations table
+CREATE TABLE locations (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+-- Create Orders table
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    customer_id INT REFERENCES customers(id),
+    order_date DATE NOT NULL,
+    location_id INT REFERENCES locations(id),
+    status VARCHAR(50) NOT NULL
+);
+
+-- Create OrderDetails table
+CREATE TABLE order_details (
+    order_id INT REFERENCES orders(id),
+    product_id INT REFERENCES finished_products(id),
+    quantity NUMERIC NOT NULL,
+    price NUMERIC NOT NULL,
+    PRIMARY KEY (order_id, product_id)
+);
+
+-- Create Inventory table
+CREATE TABLE inventory (
+    id SERIAL PRIMARY KEY,
+    product_id INT REFERENCES finished_products(id),
+    quantity NUMERIC NOT NULL
+);
+
+-- Create ProductionBatches table
+CREATE TABLE production_batches (
+    id SERIAL PRIMARY KEY,
+    product_id INT REFERENCES finished_products(id),
+    batch_date DATE NOT NULL,
+    quantity_produced NUMERIC NOT NULL
+);
+
+-- Create ExpenseCategories table
+CREATE TABLE expense_categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+-- Create Expenses table
+CREATE TABLE expenses (
+    id SERIAL PRIMARY KEY,
+    description TEXT NOT NULL,
+    amount NUMERIC NOT NULL,
+    date DATE NOT NULL,
+    category_id INT REFERENCES expense_categories(id)
+);

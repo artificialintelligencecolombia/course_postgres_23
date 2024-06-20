@@ -1,0 +1,104 @@
+==============================
+LIVING ANTIOQUIA DATABASE
+==============================
+
+---------------------
+Database creation and structure
+---------------------
+
+Create a new database
+---------------
+
+1. Using 'createdb' command. 
+createdb new_database
+
+Determine the purpose of the database 
+---------------
+
+Objective: to manage the business.
+
+Find and organize the information required.
+---------------
+
+Tables:
+
+1. Suppliers
+  Stores information about suppliers.
+
+2. RawMaterials
+  Stores information about raw materials used in production.
+  - References suppliers.
+
+3. ProductCategories
+  Categorizes the finished products.
+
+4. FinishedProducts
+  Stores information about the finished cleaning products.
+  - References product_categories.
+
+5. Customers
+  Stores information about customers (both B2B and final customers).
+
+6. Locations
+  Stores the various locations where the business supplies.
+
+7. Orders
+  Stores information about customer orders.
+  - References customers and locations.
+
+8. OrderDetails
+  Stores details of each order, including the products ordered and their quantities.
+  - References orders and finished_products.
+
+9. Inventory
+  Tracks the inventory of raw materials and finished products.
+  - References finished_products.
+
+10. ProductionBatches
+  Tracks production batches.
+  - References finished_products.
+
+11. ExpenseCategories
+  - Categorizes the expenses.
+
+12. Expenses
+  Stores information about business expenses.
+  - References expense_categories.
+
+
+
+* Item 1
+* Item 2
+  - Sub-item 1
+  - Sub-item 2
+
+Numbered Items:
+
+1. First item
+2. Second item
+3. Third item
+
+--------------------------
+Code Section (for example)
+--------------------------
+
+    import numpy as np
+
+    data = np.array([1, 2, 3, 4])
+    mean = np.mean(data)
+
+-------------------------------------------
+Link Section (URLs displayed in plain text)
+-------------------------------------------
+
+GitHub: http://github.com
+
+-----------------
+Quotes or Highlights
+-----------------
+
+> "This is a quote from someone notable."
+
+-----------------
+End of Document
+-----------------

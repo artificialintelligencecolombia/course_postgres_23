@@ -23,7 +23,7 @@ CREATE TABLE purchase_orders (
     supplier_id INT REFERENCES suppliers(id),
     order_date DATE NOT NULL,
     total_amount NUMERIC NOT NULL, -- total cost of all items in the order
-    status VARCHAR(50) NOT NULL
+    status VARCHAR(50) NOT NULL CHECK (status IN ('Pending', 'Approved', 'Rejected', 'Shipped', 'Received', 'Completed', 'Cancelled'))
 );
 
 -- Purchase Order Details
@@ -72,7 +72,7 @@ CREATE TABLE orders (
     customer_id INT REFERENCES customers(id),
     city_id INT REFERENCES cities(id),
     order_date DATE NOT NULL,
-    status VARCHAR(50) NOT NULL
+    status VARCHAR(50) NOT NULL CHECK (status IN ('Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled', 'Returned', 'Completed'))
 );
 
 -- Order Details

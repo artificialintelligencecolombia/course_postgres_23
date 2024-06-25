@@ -15,7 +15,8 @@ createdb new_database
 Determine the purpose of the database 
 ---------------
 
-Objective: to manage the business.
+Objective: to manage the supply chain of the business with suppliers and customers information.
+
 
 Find and organize the information required.
 ---------------
@@ -23,48 +24,42 @@ Find and organize the information required.
 Tables:
 
 1. Suppliers
-  Stores information about suppliers.
+- References cities.
 
-2. RawMaterials
-  Stores information about raw materials used in production.
-  - References suppliers.
+2. Purchase orders
+- References suppliers.
 
-3. ProductCategories
-  Categorizes the finished products.
+3. Purchase order details
+- References purchase_orders.
+- References raw_materials.
 
-4. FinishedProducts
-  Stores information about the finished cleaning products.
-  - References product_categories.
+4. Raw materials.
+- References suppliers_id.
 
-5. Customers
-  Stores information about customers (both B2B and final customers).
+5. Cities
+This table is shared between suppliers and customers.
 
-6. Locations
-  Stores the various locations where the business supplies.
+6. Customers
+Stores information about customers (both B2B and final customers).
+- References cities.
 
 7. Orders
-  Stores information about customer orders.
-  - References customers and locations.
+Stores information about customer orders.
+- References customers
+- References cities.
 
-8. OrderDetails
-  Stores details of each order, including the products ordered and their quantities.
-  - References orders and finished_products.
+8. Order details
+Stores details of each order, including the products ordered and their quantities.
+- References orders. 
+- References finished_products.
 
-9. Inventory
-  Tracks the inventory of raw materials and finished products.
-  - References finished_products.
+9. Payments
+- References orders.
 
-10. ProductionBatches
-  Tracks production batches.
-  - References finished_products.
+10. FinishedProducts
+Stores information about the finished products.
 
-11. ExpenseCategories
-  - Categorizes the expenses.
-
-12. Expenses
-  Stores information about business expenses.
-  - References expense_categories.
-
+11. Product Categories
 
 
 * Item 1

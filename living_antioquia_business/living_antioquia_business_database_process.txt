@@ -39,27 +39,31 @@ Tables:
 5. Cities
 This table is shared between suppliers and customers.
 
-6. Customers
+6. Potential Customers
+Stores information about global market and its status within the company (both B2B and final customers).
+- References cities.
+
+7. Customers
 Stores information about customers (both B2B and final customers).
 - References cities.
 
-7. Orders
+8. Orders
 Stores information about customer orders.
 - References customers
 - References cities.
 
-8. Order details
+9. Order details
 Stores details of each order, including the products ordered and their quantities.
 - References orders. 
 - References finished_products.
 
-9. Payments
+10. Payments
 - References orders.
 
-10. FinishedProducts
+11. FinishedProducts
 Stores information about the finished products.
 
-11. Product Categories
+12. Product Categories
 
 
 * Item 1

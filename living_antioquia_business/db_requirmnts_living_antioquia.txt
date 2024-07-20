@@ -1,0 +1,43 @@
+==============================
+LIVING ANTIOQUIA DATABASE
+==============================
+
+---------------------
+Requirements
+---------------------
+
+The DB is designed to:
+  1. CRM.
+  2. Manage custormer orders and payment tracking.
+  3. Manage suppliers and purchase orders.
+  4. Keep basic information of the raw materials.
+
+Stakeholders
+---------------
+- Sales Team: Access to customer contact information, order history, and payment statuses.
+- Inventory Managers: Detailed information on raw materials, supplier details, and purchase orders.
+- Finance Department: Comprehensive payment records and financial summaries.
+- Management Department: Aggregate data and reports for strategic planning and performance monitoring.
+
+---------------------
+Data security and privacy requirements
+---------------------
+
+Sensitive data:
+1. potencial customers
+2. customers
+3. orders
+4. payments
+5. suppliers 
+
+Access control:
+---------------
+
+- Sales Team: Full access to customer, order, and payment data; read access to product information.
+- Inventory Managers: Full access to supplier and raw material data; read access to purchase order data.
+- Finance Department: Full access to payment data; read access to order data.
+- Management Department: Read access to all data for reporting and strategic planning.
+
+-----------------
+End of Document
+-----------------

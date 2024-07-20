@@ -1,0 +1,55 @@
+==============================
+DATABASE BACKUP
+==============================
+
+
+Prepare Environment
+---------------
+
+1. Verify PostgreSQL service is running:
+  - Open the Services app (you can search for "Services" in the Start menu).
+  - Find PostgreSQL in the list of services.
+  - Ensure its status is Running. If it's not running, right-click on it and select Start.
+
+
+Select a backup location
+---------------
+
+In this case, the backup location is:
+C:\Users\damal\living_antioquia\databases
+
+Navigate to PostgreSQL's bin Directory
+---------------
+
+1. Open the Command Prompt as an administrator.
+2. Navigate to the directory where PostgreSQL's pg_dump utility is located.
+  - cd "C:\Program Files\PostgreSQL\<version>\bin"
+
+Create the Full Backup
+---------------
+
+pg_dump -U dbuser -d business_db -F c -b -v -f "C:\path\to\backup\directory\business_db_full_backup.sql"
+
+Explanation of options:
+-U dbuser: Specifies the PostgreSQL user. -> psql: SELECT current_user;
+-d business_db: Specifies the database to backup.
+-F c: Specifies the custom format for the backup file.
+-b: Includes large objects in the dump.
+-v: Verbose mode for detailed output.
+-f "C:\path\to\backup\directory\business_db_full_backup.sql": Specifies the filename and location of the backup.
+
+Note:
+> The password the pg_dump command asks for is the -U postgres password (the postgres password).
+
+Verify the backup file
+---------------
+
+1. Navigate to the specified directory where the backup file is located.
+
+2. pg_restore -l "C:\path\to\backup\directory\business_db_full_backup.sql"
+  - pg_restore: This is the command-line utility used to restore a PostgreSQL database from a dump file created by pg_dump.
+  - l: This option tells pg_restore to list the contents of the archive file. Instead of actually restoring the data, it outputs a list of the items in the backup file, which can include tables, indexes, functions, and other database objects.
+
+-----------------
+End of Document
+-----------------

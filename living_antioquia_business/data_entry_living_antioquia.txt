@@ -1,0 +1,49 @@
+==============================
+DATA ENTRY LIVING ANTIOQUIA
+==============================
+
+---------------------
+Data Entry: 7/10/2024
+---------------------
+
+INSERT INTO potential_customers (name, type, contact_name, contact_phone, address, city_id, notes, lifecycle_stage) VALUES ('Don Santa', 'B2B', 'Doña Diana', '6045312592', 'https://maps.app.goo.gl/oFmPQJ7mCu7NzTVK8', 18, '1-Via Rio-Cvib 2-Supermercado en punto central.','visita+wpp'); !!!! EDIIIT
+
+INSERT INTO potential_customers (name, type, contact_name, contact_phone, address, city_id, notes, lifecycle_stage) VALUES ('Todo en Uno', 'B2B', 'Don Diego', '+573042059503', 'https://maps.app.goo.gl/QZ6TU7iVWZ96V18T8', 18, 'Cimarronas Plaza | Crecimiento urbanistico','visita+wpp');
+
+INSERT INTO potential_customers (name, type, contact_name, contact_phone, address, city_id, notes, lifecycle_stage) VALUES ('Supermercado Las Acacias', 'B2B', 'William', '+573016107519', 'https://maps.app.goo.gl/q24CJ8MQ5L1miUbFA', 18, 'Parroquia San Joaquin y Santa Ana | Lugar muy central','visita+wpp');
+
+INSERT INTO potential_customers (name, type, contact_name, contact_phone, address, city_id, notes, lifecycle_stage) VALUES ('Supermercado MerkMas', 'B2B', 'Don Oscar', '+573043425040', 'https://maps.app.goo.gl/4oY7fUbqq4wrkECy6', 18, 'Escuela Normal Superior | Calle ppal de la zona','visita+wpp');
+
+INSERT INTO potential_customers (name, type, contact_name, contact_phone, address, city_id, notes, lifecycle_stage) VALUES ('Supermercado El Pinar', 'B2B', 'Estefania', '+573106558327', 'https://maps.app.goo.gl/SLNTsbeio5ij2sZDA', 18, 'Zona ccial | Cerca a Ventus','visita+wpp');
+
+INSERT INTO potential_customers (name, type, contact_name, contact_phone, address, city_id, notes, lifecycle_stage) VALUES ('SOME', 'B2B', 'Estefania', '6044333596', 'https://maps.app.goo.gl/asZDKu3ED6WHWwK98', 18, 'Zona ccial | Cerca a Ventus','visita+wpp');
+
+---------------------
+Data Entry: INIT
+---------------------
+
+cities
+---------------
+
+INSERT INTO cities (city) VALUES ('Abejorral'), ('Alejandria'), ('Argelia'), ('Carmen de Viboral'), ('Cocorna'), ('Concepcion'), ('El Peñol'), ('El Retiro'), ('Envigado'), ('Granada'), ('Guarne'), ('Guatape'), ('La Ceja'), ('La Union'), ('Marinilla'), ('Medellin'), ('Nariño'), ('Rionegro'), ('San Carlos'), ('San Francisco'), ('San Luis'), ('San Rafael'), ('San Vicente'), ('Sabaneta'), ('Santa Elena'), ('Santuario'), ('Sonson');
+
+
+suppliers
+---------------
+
+INSERT INTO suppliers (name, contact_name, contact_phone, address, city_id) VALUES ('Bouquet Aromas y Fragancias SAS', 'Natalia Jaramillo','3009134440','Cra 51 No. 6sur - 27, Guayabal',16);
+
+INSERT INTO suppliers (name, contact_name, contact_email, contact_phone, address, city_id) VALUES ('Masterplast SAS', 'Alexander', 'comercialmasterplast@gmail.com','+573013179104','Cra 50 No. 38 - 93, Guayabal',16);
+
+INSERT INTO suppliers (name, contact_name, contact_email, contact_phone, address, city_id) VALUES ('Quimifast y CIA SAS', 'Natalia Gutierrez', 'ventasquimifast@gmail.com','+573176654788','Cra 50 No. 91sur - 411, Bodega 2',16);
+
+potential_customers
+---------------
+
+INSERT INTO potential_customers (name, type, city_id, notes, lifecycle_stage) VALUES ('La Troja', 'B2B', 23, '1-Entrega muestra en frio. 2-Se entrega muestra sin aroma.','visita+wpp');
+
+INSERT INTO potential_customers (name, type, contact_name, contact_phone, address, city_id, notes, lifecycle_stage) VALUES ('Supermercado El Sol', 'B2B', 'Don Jorge', '+573508362075', 'Sector las Partidas via a San Vicente', 23, '1-Entrega muestra en frio. 2-Se entrega muestra sin aroma.','visita+wpp');
+
+-----------------
+End of Document
+-----------------

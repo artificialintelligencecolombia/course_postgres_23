@@ -1,0 +1,49 @@
+==============================
+COLUMN DATA TYPE CONVERSION AND DATA MIGRATION 
+==============================
+
+---------------------
+Objective
+---------------------
+
+Converting created_at and updated_at Columns from now() to User-Provided DATE Format in PostgreSQL.
+
+1. Backup 
+---------------
+
+Perform the backup operation.
+
+2. Remove Default values
+---------------
+
+# Remove the default now() values:
+ALTER TABLE suppliers ALTER COLUMN created_at DROP DEFAULT;
+ALTER TABLE suppliers ALTER COLUMN updated_at DROP DEFAULT;
+
+3. Convert timestamps to dates  
+---------------
+
+# Update the existing timestamp values to date values. Before altering the column type, this ensures the existing data is in the correct format:
+
+UPDATE suppliers SET created_at = created_at::date, updated_at = updated_at::date;
+
+4. Change the column types 
+---------------
+
+# Change the data type of the columns from timestamp to date:
+
+ALTER TABLE suppliers ALTER COLUMN created_at TYPE date USING created_at::date;
+ALTER TABLE suppliers ALTER COLUMN updated_at TYPE date USING updated_at::date;
+
+5. Modify table structure
+---------------
+
+# sets the default value of the created_at, updated_at column to NULL.
+
+ALTER TABLE suppliers ALTER COLUMN created_at SET DEFAULT NULL;
+ALTER TABLE suppliers ALTER COLUMN updated_at SET DEFAULT NULL;
+
+
+-----------------
+End of Document
+-----------------

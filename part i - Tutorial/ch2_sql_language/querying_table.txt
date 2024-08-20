@@ -33,13 +33,6 @@ SELECT * FROM weather
  WHERE city = 'San Francisco' AND prcp > 0.0;
 
 ---------------------
-Pg Admin Queries 
----------------------
-
-1. Select the db.
-2. Go to Tools -> Query tool.
-
----------------------
 ORDER BY
 ---------------------
 
@@ -53,9 +46,13 @@ SELECT * FROM weather
 DUPLICATED IN QUERIES
 ---------------------
 
-We can requiest that duplicated rows be removed from QUERY.
+We can request that duplicated rows to be removed from QUERY.
 
 
 SELECT DISTINCT city
  FROM weather
  ORDER BY city;
+
+-----------------
+End of Document
+-----------------

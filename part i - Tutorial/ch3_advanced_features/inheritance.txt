@@ -1,0 +1,41 @@
+==============================
+INHERITANCE
+==============================
+
+Inheritance in SQL allows a table to inherit columns and properties from another table, enabling more flexible database designs.
+
+Inheritance Basics:
+- A table that inherits from another table automatically includes all columns from the parent table.
+- The child table can have additional columns while retaining the parent's columns.
+
+1. Example:
+CREATE TABLE cities ( -- Parent table
+    name text,
+    population real,
+    elevation int -- (in ft)
+);
+
+CREATE TABLE capitals ( -- Child table 
+    state char(2) UNIQUE NOT NULL
+) INHERITS (cities);
+
+- The capitals table inherits name, population, and elevation from cities and adds its own column state.
+
+Querying Inherited Tables:
+- To include data from the cities table and its child tables:
+SELECT name, elevation
+FROM cities
+WHERE elevation > 500;
+
+- To include data only from the cities table, excluding inherited tables:
+SELECT name, elevation
+FROM ONLY cities
+WHERE elevation > 500;
+
+Important Notes:
+- Inheritance simplifies design but has limitations, such as lack of integration with unique constraints or foreign keys across inherited tables.
+-  the ONLY keyword is used to filter out records from child tables, so your query only affects or retrieves data from the specified parent table.
+
+-----------------
+End of Document
+-----------------

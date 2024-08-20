@@ -1,0 +1,39 @@
+==============================
+TRANSACTIONS
+==============================
+
+Are designed to ensure data integrity, consistency, and reliability during operations that involve multiple steps into a single, indivisible unit.
+
+It ensures that either all the operations are completed successfully or none of them are completed. THIS PREVENTS DATA INCONSISTENCIES.
+
+Transactions are initiated with BEGIN and finalized with COMMIT. If an error occurs before the COMMIT, the transaction can be rolled back using ROLLBACK.
+
+1. Example: 
+BEGIN;
+UPDATE accounts SET balance = balance - 100.00 WHERE name = 'Alice';
+UPDATE branches SET balance = balance - 100.00 WHERE name = (SELECT branch_name FROM accounts WHERE name = 'Alice');
+UPDATE accounts SET balance = balance + 100.00 WHERE name = 'Bob';
+UPDATE branches SET balance = balance + 100.00 WHERE name = (SELECT branch_name FROM accounts WHERE name = 'Bob');
+COMMIT;
+
+Savepoints and Rollback
+---------------
+
+We can roll back only a part of a transaction as well.
+
+2. Ex:
+BEGIN;
+
+UPDATE accounts SET balance = balance - 100.00 WHERE name = 'Alice';
+SAVEPOINT my_savepoint;
+
+UPDATE accounts SET balance = balance + 100.00 WHERE name = 'Bob';
+-- oops ... let's rollback to the savepoint and credit Wally's account instead
+ROLLBACK TO my_savepoint;
+
+UPDATE accounts SET balance = balance + 100.00 WHERE name = 'Wally';
+
+COMMIT;
+
+- We can create savepoints within the transaction.
+- Rollback to undes operations after the savepoint.

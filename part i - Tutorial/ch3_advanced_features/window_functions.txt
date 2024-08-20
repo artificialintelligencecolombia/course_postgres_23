@@ -1,0 +1,72 @@
+==============================
+WINDOW FUNCTIONS
+==============================
+
+Perform calculations across a set of table rows related to the current row without collapsing them into a single output.
+
+Window functions are initiated with the OVER clause, which defines how the rows are partitioned and ordered.
+
+1. Example:
+SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname)
+FROM empsalary;
+
+depname | empno | salary | avg
+-----------+-------+--------+-----------------------
+develop | 11 | 5200 | 5020.0000000000000000
+develop | 7 | 4200 | 5020.0000000000000000
+develop | 9 | 4500 | 5020.0000000000000000
+develop | 8 | 6000 | 5020.0000000000000000
+develop | 10 | 5200 | 5020.0000000000000000
+personnel | 5 | 3500 | 3700.0000000000000000
+personnel | 2 | 3900 | 3700.0000000000000000
+sales | 3 | 4800 | 4866.6666666666666667
+sales | 1 | 5000 | 4866.6666666666666667
+sales | 4 | 4800 | 4866.6666666666666667
+(10 rows)
+
+- The OVER clause defines the window of rows.
+- PARTITION BY divides the result set into partitions.
+- ORDER BY determines the order of rows within partitions.
+
+2. Ranking Example:
+SELECT depname, empno, salary, rank() OVER (PARTITION BY depname ORDER BY salary DESC)
+FROM empsalary;
+
+depname | empno | salary | rank
+-----------+-------+--------+------
+develop | 8 | 6000 | 1
+develop | 10 | 5200 | 2
+develop | 11 | 5200 | 2
+develop | 9 | 4500 | 4
+develop | 7 | 4200 | 5
+personnel | 2 | 3900 | 1
+personnel | 5 | 3500 | 2
+sales | 1 | 5000 | 1
+sales | 4 | 4800 | 2
+sales | 3 | 4800 | 2
+(10 rows)
+
+- Rank employees within each department based on salary.
+
+3. Cumulative Sum Example:
+SELECT salary, sum(salary) OVER (ORDER BY salary) 
+FROM empsalary;
+
+salary | sum
+--------+-------
+3500 | 3500
+3900 | 7400
+4200 | 11600
+4500 | 16100
+4800 | 25700
+4800 | 25700
+5000 | 30700
+5200 | 41100
+5200 | 41100
+6000 | 47100
+(10 rows)
+
+- Calculate a running total (cumulative sum) of salaries from lowest to highest.
+
+- Window functions execute after WHERE, GROUP BY, and HAVING clauses, so they can't be used directly in those clauses.
+- Subselects can be used to filter results after window functions are applied.

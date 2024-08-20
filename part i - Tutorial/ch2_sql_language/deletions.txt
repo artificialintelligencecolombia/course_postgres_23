@@ -1,0 +1,24 @@
+==============================
+DELETIONS
+==============================
+
+Rows can be removed.
+
+1. Example
+DELETE FROM table
+    WHERE condition;
+
+2. Example
+DELETE FROM table;
+- This command deletes all rows from the table. Leaves it empty.
+
+WARMING
+---------------
+
+DELETE FROM tablename;
+
+!!!Without a qualification, DELETE will remove all rows from the given table, leaving it empty. The system will not request confirmation before doing this!
+
+-----------------
+End of Document
+-----------------

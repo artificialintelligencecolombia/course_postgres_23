@@ -3,6 +3,14 @@ DATA ENTRY LIVING ANTIOQUIA
 ==============================
 
 ---------------------
+Data Entry: 7/30/2024
+---------------------
+
+INSERT INTO customers (name, type, contact_name, contact_phone, address, city_id, notes, lifecycle_stage, created_at) VALUES ('Mercado Bar Las Margaritas', 'B2B', 'Briana', '+573232870012','https://maps.app.goo.gl/TAivNBkxPEQx9VFTA', 18, 'Sobre via principal a San Antonio','visita+wpp2','2024-07-30');
+
+INSERT INTO customers (name, type, contact_name, contact_phone, address, city_id, notes, lifecycle_stage, created_at) VALUES ('San Simon Supermercado', 'B2B', 'Maicol', '3217578974','https://maps.app.goo.gl/ior2WWZkcKvqgfDw9', 18, 'En el Mall San Bartolo','visita+wpp2','2024-07-30'), ('Tienda Fruver', 'final customer', 'Felipe', '3041312473','https://maps.app.goo.gl/GWs6F2wugbwTW6Ck7', 18, 'Sobre la glorieta a la entrada de San Antonio desde Llanogrande','visita+wpp2','2024-07-30'),('Agro San Antonio', 'B2B', 'Doña Ana Maria', '6045317724','https://maps.app.goo.gl/3EcS7tgxc6GkwS4c7', 18, 'Sobre la via ppal, en la zona rosa de San Antonio','visita+wpp2','2024-07-30'), ('MercaYA', 'B2B', 'Daniel', '3203707747','https://maps.app.goo.gl/gRcywJFkzsMsfxFr8', 18, 'En la zona Residencial','visita+wpp2','2024-07-30'), ('Campo Fresco', 'B2B', 'Carlos', '6045619323','https://maps.app.goo.gl/HLvTF5YXAJ2SxyzJ6', 18, 'Muy cerca al parque principal, en la zona residencial','visita+wpp2','2024-07-30');
+
+---------------------
 Data Entry: 7/10/2024
 ---------------------
 

@@ -1,0 +1,16 @@
+==============================
+AGGREGATED FUNCTIONS
+==============================
+
+Aggregate function 'calcula' a single result from multiple input rows.
+ej: count, sum, avg, max ,min.
+
+SELECT max(column) FROM table_name -- output: max value from column
+
+Note: if we want to retrieve the row(s) from the table that matches with the Aggregate function values (max, min for example), we need to nest the Aggregate to the subquery:
+
+SELECT * FROM table_name WHERE price = (SELECT max(price) FROM table_name);
+
+-----------------
+End of Document
+-----------------

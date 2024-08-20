@@ -1,0 +1,12 @@
+==============================
+VIEWS
+==============================
+
+Avoid the time wasted each time I tpe a query. Instead of this, the query is stored in a VIEW.
+
+CREATE VIEW myview AS
+    SELECT name, temp_lo, temp_hi, prcp, date, location
+        FROM weather, cities
+        WHERE city = name;
+
+SELECT * FROM myview;

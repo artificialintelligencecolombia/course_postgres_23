@@ -1,0 +1,49 @@
+==============================
+JOINS
+==============================
+
+---------------------
+JOIN / INNER JOIN 
+---------------------
+
+Join queries are those  that access multiple tables (or multiple
+instances of the same table).
+
+SELECT * FROM table1 JOIN table2 ON table1.column = table2.column;
+
+example:
+SELECT *
+    FROM weather JOIN cities ON city = name;
+
+example:
+SELECT city, temp_lo, temp_hi, prcp, date, location
+    FROM weather JOIN cities ON city = name;
+
+example:
+SELECT weather.city, weather.temp_lo, weather.temp_hi,
+    weather.prcp, weather.date, cities.location
+    FROM weather JOIN cities ON weather.city = cities.name;
+
+example:
+SELECT city,  count(*)
+FROM cities
+JOIN customers ON cities.id = customers.city_id * syntax for repeated column names
+GROUP BY city;
+
+---------------------
+LEFT OUTER JOIN 
+---------------------
+
+- This type of join returns all records from the left table
+- and the matched records from the right table (cities).
+- If there is no match, the result is NULL on the side of the right table.
+
+example:
+SELECT columns
+FROM table1
+LEFT OUTER JOIN table2
+ON table1.column_name = table2.column_name;
+
+-----------------
+End of Document
+-----------------

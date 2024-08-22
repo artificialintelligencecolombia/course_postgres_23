@@ -1,0 +1,83 @@
+==============================
+CONECT TO A POSTGRES DATABASE FROM CLIENT TO HOST
+==============================
+
+---------------------
+1. Prepare the HOST LAPTOP (SERVER) 
+---------------------
+
+1.1. Edit postgresql.conf
+This allows remote connections
+
+- Locate the postgresql.conf file (typically found in the PostgreSQL data directory, e.g., C:\Program Files\PostgreSQL\<version>\data\).
+
+- Find: #listen_addresses = 'localhost'
+- Uncomment the line: delete '#'
+- Change it to: listen_addresses = '*'
+- Save the file.
+
+1.2 Edit pg_hba.conf
+This allows connections from any IP address. For more security, replace 0.0.0.0/0 with the specific IP address of the client laptop.
+- Find: #host DATABASE DATABASE ADDRESS METHOD [OPTIONS]
+- Uncomment the line: delete '#'
+- Change it to: 
+host    all             all             <client-ip-address>/32          md5
+host    all             all             <client-vm-ip-address>/32       md5
+host    all             all             <host-vm-ip-address>/32         md5
+
+- Replace <client-ip-address>, <client-vm-ip-address>, and <host-vm-ip-address> with the actual IP addresses you identified for each machine.
+- Save the file
+
+---------------------
+2. Find IP Addresses
+---------------------
+
+2.1 Client Machine (Windows):
+- ipconfig
+- Identify the IPv4 address for the relevant network adapter. (LAN WiFi)
+
+
+2.2 Client's VMware VM (Linux):
+- ip a
+- Look for the IP address associated with the network interface, typically under inet.
+
+2.3 Host's VMware VM (Linux):
+- ip a
+- Identify the IP address for the network interface.
+
+---------------------
+3. Restart PostgreSQL Service on the Host Machine
+---------------------
+
+- On the host machine (Windows), open Command Prompt as Administrator.
+- net stop postgresql-x64-15
+- net start postgresql-x64-15
+
+---------------------
+4. Configure the Firewall on the Host Machine
+---------------------
+
+Allow Port 5432 in Windows Firewall (for Windows hosts)
+
+4.1 Open "Windows Defender Firewall with Advanced Security."
+4.2 Create a new inbound rule to allow TCP traffic on port 5432:
+- Choose "Port" and then "TCP".
+- Specify port 5432.
+- Choose "Allow the connection."
+- Apply to all profiles (Domain, Private, Public).
+- Name the rule (e.g., "PostgreSQL 5432").
+- Finish the setup.
+
+---------------------
+5. Connect to the PostgreSQL Database
+---------------------
+
+From the Client Machine and VMware VMs (Command Prompt on Windows or Terminal on Linux)
+
+- psql -h <host-ip-address> -U postgres -d <database_name>
+Replace <host-ip-address> with the IP address of the Windows host machine.
+Replace <database_name> with the name of the database.
+
+-----------------
+End of Document
+-----------------

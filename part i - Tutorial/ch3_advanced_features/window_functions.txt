@@ -69,4 +69,5 @@ salary | sum
 - Calculate a running total (cumulative sum) of salaries from lowest to highest.
 
 - Window functions execute after WHERE, GROUP BY, and HAVING clauses, so they can't be used directly in those clauses.
+- They are only permitted in the SELECT list and the ORDER BY clause query.
 - Subselects can be used to filter results after window functions are applied.

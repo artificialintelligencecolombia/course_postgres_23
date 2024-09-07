@@ -71,3 +71,7 @@ salary | sum
 - Window functions execute after WHERE, GROUP BY, and HAVING clauses, so they can't be used directly in those clauses.
 - They are only permitted in the SELECT list and the ORDER BY clause query.
 - Subselects can be used to filter results after window functions are applied.
+
+Example
+---------------
+SELECT id, customer_id, status, total_amount, SUM(total_amount) OVER(ORDER BY customer_id) AS cumulative_total FROM orders ORDER BY updated_at;

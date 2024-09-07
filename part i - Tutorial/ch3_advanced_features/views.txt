@@ -10,3 +10,5 @@ CREATE VIEW myview AS
         WHERE city = name;
 
 SELECT * FROM myview;
+
+SELECT orders.id, orders.customer_id, orders.total_amount, orders.status AS order_status,payments.payment_method, payments.payment_status, payments.payment_date FROM orders JOIN payments ON orders.id = payments.order_id;

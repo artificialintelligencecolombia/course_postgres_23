@@ -1,0 +1,20 @@
+==============================
+SQL SYNTAX
+==============================
+
+---------------------
+Lexical Structure
+---------------------
+
+> SELECT ...; -> A query is defined as a token.
+
+> key words: SELECT, INSERT INTO, SET, UPDATE, DROP.
+> identifiers: banes of tables, columns or other database objects.
+> constants: a string with '' -> ex: 'constant'
+
+Operators
+-----------------
++ - * / < > = ~ ! @ # % ^ & | ` ?
+
+Note:
+> -- is used for a comment.

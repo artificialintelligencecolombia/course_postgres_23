@@ -10,3 +10,6 @@ CREATE VIEW myview AS
         WHERE city = name;
 
 SELECT * FROM myview;
+
+- \dv
+List all views on the database.
